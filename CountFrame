@@ -1,0 +1,38 @@
+import java.awt.*;
+import java.awt.event.*;
+class CountFrame extends Frame {
+private int counter = 0;
+private Panel p = new Panel(new FlowLayout());
+private TextField tCounter = new TextField(5);
+private Button bInc = new Button(">");
+private Button bDec = new Button("<");
+public CountFrame() {
+tCounter.setText("" + counter);
+// Komponenten in Fenster einf¨ugen
+p.add(bDec);
+p.add(tCounter);
+p.add(bInc);
+this.add(p);
+// Beobachter registrieren
+bDec.addActionListener (new ActionListener () {
+public void actionPerformed (ActionEvent e) {
+counter--;
+tCounter.setText("" + counter);
+}
+});
+bInc.addActionListener (new ActionListener () {
+public void actionPerformed (ActionEvent e) {
+counter++;
+tCounter.setText("" + counter);
+}
+});
+addWindowListener (new WindowAdapter() {
+public void windowClosing (WindowEvent e) {
+System.exit(0);
+}
+});
+this.setSize(100, 100);
+this.setLocation(100, 100);
+this.setVisible(true);
+}
+}
